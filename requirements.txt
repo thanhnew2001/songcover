@@ -1,0 +1,6 @@
+pyworld==0.3.2
+scipy
+tqdm
+pydub
+demucs
+so-vits-svc-fork
