@@ -4,3 +4,5 @@ tqdm
 pydub
 demucs
 so-vits-svc-fork
+ffmpeg
+yt_dlp
