@@ -105,12 +105,12 @@ def combine_audio(vocal_file, instrument_file, output_file):
 
 # Main execution
 if __name__ == "__main__":
-    # speaker_name = "thanh"
-    # audio_input = "audio.wav"  # Replace with your MP3 path
-    # separate_audio(audio_input)
+    speaker_name = "trinhan"
+    audio_input = "trinhan.wav"  # Replace with your MP3 path
+    separate_audio(audio_input)
 
-    # output_dir = f"dataset_raw/{speaker_name}"
-    # split_audio(f"separated/htdemucs/audio/vocals.wav", output_dir)
+    output_dir = f"dataset_raw/{speaker_name}"
+    split_audio(f"separated/htdemucs/{speaker_name}/vocals.wav", output_dir)
 
     # preprocess()  # Preprocessing for training
     train_model()  # Train the model
