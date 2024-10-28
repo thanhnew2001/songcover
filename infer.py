@@ -31,8 +31,8 @@ def run_inference(audio, config, model, pitch):
 run_inference(AUDIO, CONFIG, MODEL, PITCH)
 
 # Combine vocal and instrument (song cover)
-VOCAL = "separated/htdemucs/{song}/vocals.out.wav"  # Path to the vocal output
-INSTRUMENT = "separated/htdemucs/{song}/no_vocals.wav"  # Path to the instrumental output
+VOCAL = f"separated/htdemucs/{song}/vocals.out.wav"  # Path to the vocal output
+INSTRUMENT = f"separated/htdemucs/{song}/no_vocals.wav"  # Path to the instrumental output
 
 def combine_audio(vocal_file, instrument_file, output_file):
     sound1 = AudioSegment.from_file(vocal_file)
@@ -44,6 +44,6 @@ def combine_audio(vocal_file, instrument_file, output_file):
     print(f"Combined audio saved to {output_file}")
 
 # Run the combining function
-combine_audio(VOCAL, INSTRUMENT, "giongbao_xanh50.wav")
+combine_audio(VOCAL, INSTRUMENT, f"{song}_trump.wav")
 
 # Optional: play the final cover audio (if using an environment that supports audio pl
