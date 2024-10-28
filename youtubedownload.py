@@ -11,7 +11,7 @@ ydl_opts = {
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'wav',
     }],
-    "outtmpl": '',  # this is where you can edit how you'd like the filenames to be formatted
+    "outtmpl": 'trinhan',  # this is where you can edit how you'd like the filenames to be formatted
 }
 def download_from_url(url):
     ydl.download([url])
