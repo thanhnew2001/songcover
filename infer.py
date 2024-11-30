@@ -2,9 +2,9 @@
 import subprocess
 from pydub import AudioSegment
 
-song = "depacito"
+VOICE = "demthayta"
 # Define audio input
-AUDIO_INPUT = f"{song}.wav"  # Path to the input audio file
+AUDIO_INPUT = "demthayta.wav"  # Path to the input audio file
 
 # Separate vocals and instruments using Demucs
 def separate_audio(input_audio):
@@ -16,8 +16,8 @@ def separate_audio(input_audio):
 separate_audio(AUDIO_INPUT)
 
 # Inference
-AUDIO = "separated/htdemucs/{song}/vocals"  # Path to the separated vocal file
-MODEL = "logs/44k/G_4000.pth"  # Path to the model file
+AUDIO = f"separated/htdemucs/{VOICE}/vocals"  # Path to the separated vocal file
+MODEL = "logs/44k/G_4800.pth"  # Path to the model file
 CONFIG = "logs/44k/config.json"  # Path to the configuration file
 
 # Change according to your voice tone
@@ -25,14 +25,16 @@ PITCH = 0  # Pitch adjustment (12 = 1 octave, -12 = -1 octave)
 
 # Run inference
 def run_inference(audio, config, model, pitch):
+    print("Running inference...")
     command = f"svc infer {audio}.wav -c {config} -m {model} -na -t {pitch}"
     subprocess.run(command.split())
+    print("Completed inference...")
 
 run_inference(AUDIO, CONFIG, MODEL, PITCH)
 
 # Combine vocal and instrument (song cover)
-VOCAL = f"separated/htdemucs/{song}/vocals.out.wav"  # Path to the vocal output
-INSTRUMENT = f"separated/htdemucs/{song}/no_vocals.wav"  # Path to the instrumental output
+VOCAL = f"separated/htdemucs/{VOICE}/vocals.out.wav"  # Path to the vocal output
+INSTRUMENT = f"separated/htdemucs/{VOICE}/no_vocals.wav"  # Path to the instrumental output
 
 def combine_audio(vocal_file, instrument_file, output_file):
     sound1 = AudioSegment.from_file(vocal_file)
@@ -44,6 +46,6 @@ def combine_audio(vocal_file, instrument_file, output_file):
     print(f"Combined audio saved to {output_file}")
 
 # Run the combining function
-combine_audio(VOCAL, INSTRUMENT, f"{song}_trump.wav")
+combine_audio(VOCAL, INSTRUMENT, f"{VOICE}_covered.wav")
 
 # Optional: play the final cover audio (if using an environment that supports audio pl
